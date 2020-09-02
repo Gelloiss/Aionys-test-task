@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 const fs = require('fs');
+const path = require('path');
 
 app.get('/', (request, response) => {
   response.send(0);
@@ -11,7 +12,7 @@ app.get('/notes/:id?', (request, response) => { //Get notes
   let error = false;
   let result = {};
   const id = request.params.id;
-  const notes = JSON.parse(fs.readFileSync('base/note.json'));
+  const notes = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'base', 'note.json')));
   if (id === undefined) { //get all notes
     result = {
       notes: notes,
