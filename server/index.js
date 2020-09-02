@@ -2,9 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({extended: true}));
-app.use(bodyParser.raw({extended: true}));
 const fs = require('fs');
 const path = require('path');
 
@@ -16,6 +14,17 @@ const getBase = (file = 'note.json') => {
 const setBase = (file, data) => {
   fs.writeFileSync((path.resolve(__dirname, 'base', file)), JSON.stringify(data));
   return true;
+}
+
+const getNotePosition = (notes, search) => {
+  let result = -1;
+  for (let i = 0; i < notes.length; i++) {
+    if (notes[i].id == search) {
+      result = i;
+      break;
+    }
+  }
+  return result;
 }
 
 /*ROUTING*/
@@ -30,22 +39,20 @@ app.get('/notes/:id?', (request, response) => { //Get notes
   const notes = getBase();
   if (id === undefined) { //get all notes
     result = {
-      notes: notes,
-      error: error
+      notes,
+      error
     };
   }
 
   else { //get note by id
     let note = '';
     if (Number.isInteger(parseInt(id))) {
-      for (let i = 0; i < notes.length; i++) {
-        if (notes[i].id == id) {
-          note = notes[i];
-          error = false;
-          break;
-        }
+      const position = getNotePosition(notes, id);
+      if (position != -1) {
+        note = notes[position];
+        error = false;
       }
-      if (note.length == 0) {
+      else {
         error = 'note does not exist';
       }
     }
@@ -73,17 +80,15 @@ app.post('/notes', (request, response) => { //Add new note
   response.send(true);
 });
 
-app.put('/notes/:id', (request, response) => {
+app.put('/notes/:id', (request, response) => { //update base
   let error = false;
-  const id = request.params.id;
   const notes = getBase();
   if (Number.isInteger(parseInt(id))) {
     for (let i = 0; i < notes.length; i++) {
-      if (notes[i].id == id) {
+      const position = getNotePosition(notes, request.params.id);
+      if (position != -1) {
         notes[i].text = request.body.text;
         setBase('note.json', notes);
-        error = false;
-        break;
       }
       else {
         error = 'note does not exist';
@@ -94,9 +99,31 @@ app.put('/notes/:id', (request, response) => {
     error = 'incorrect id';
   }
   result = {
-    error: error
+    error
   };
   response.send(JSON.stringify(result));
+});
+
+app.delete('/notes/:id', (request, response) => { //delete note
+  const notes = getBase();
+  if (Number.isInteger(parseInt(request.params.id))) {
+    const position = getNotePosition(notes, request.params.id);
+    if (position != -1) {
+      notes.splice(position, 1);
+      setBase('note.json', notes);
+      error = false;
+    }
+    else {
+      error = 'note does not exist';
+    }
+  }
+  else {
+    error = 'incorrect id';
+  }
+  result = {
+    error
+  };
+  response.send(result);
 });
 
 app.listen(port,(err) => {
