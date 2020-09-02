@@ -60,7 +60,7 @@ app.get('/notes/:id?', (request, response) => { //Get notes
   response.send(JSON.stringify(result));
 });
 
-app.post('/notes', (request, response) => {
+app.post('/notes', (request, response) => { //Add new note
   let notes = getBase();
   let i = getBase('increment.json').note;
   i++;
@@ -71,6 +71,32 @@ app.post('/notes', (request, response) => {
   setBase('note.json', notes);
   setBase('increment.json', {'note':i});
   response.send(true);
+});
+
+app.put('/notes/:id', (request, response) => {
+  let error = false;
+  const id = request.params.id;
+  const notes = getBase();
+  if (Number.isInteger(parseInt(id))) {
+    for (let i = 0; i < notes.length; i++) {
+      if (notes[i].id == id) {
+        notes[i].text = request.body.text;
+        setBase('note.json', notes);
+        error = false;
+        break;
+      }
+      else {
+        error = 'note does not exist';
+      }
+    }
+  }
+  else {
+    error = 'incorrect id';
+  }
+  result = {
+    error: error
+  };
+  response.send(JSON.stringify(result));
 });
 
 app.listen(port,(err) => {
