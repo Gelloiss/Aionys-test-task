@@ -11,6 +11,9 @@ const TextForm = props => (
     onSubmit = {(values, { setSubmitting }) => {
       if (values.target == 'add') {
         let query = fetch('http://localhost:3000/notes', {
+          headers: {
+            'Content-Type': 'application/json',
+          },
           method: 'POST',
           body: JSON.stringify({"text":values.text}),
         });
