@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './Note.module.scss';
+import { connect } from 'react-redux';
+import { mapDispatchToProps, mapStateToProps } from '../Redux';
 
 class Note extends React.Component {
   constructor(props) {
@@ -36,6 +38,8 @@ class Note extends React.Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({"text":text})
+      }).then(() => {
+        this.props.onNoteUpdate(id, text);
       })
     }
   }
@@ -73,10 +77,14 @@ class Note extends React.Component {
 
     return (
       <div className={styles.noteBlock}>
-        <p onClick={() => this.setState({edit: true, value: this.state.value})} className={styles.text}>{this.state.value}</p>
+        <p onClick={() => this.setState({edit: true, value: this.state.value})} className={styles.text}>
+          <pre>
+            {this.state.value}
+          </pre>
+        </p>
       </div>
     )
   }
 }
 
-export default Note;
+export default connect(mapStateToProps, mapDispatchToProps)(Note);

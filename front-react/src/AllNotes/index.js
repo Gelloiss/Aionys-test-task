@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Note from '../Note';
 import styles from './AllNotes.module.scss';
+import { connect } from 'react-redux';
+import { mapStateToProps, mapDispatchToProps } from '../Redux';
 
-class AllNotes extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {notes: []};
-  }
-
+class AllNotes extends Component {
   componentDidMount() {
     fetch('http://localhost:3001/notes', {
       method: 'GET',
@@ -17,31 +14,16 @@ class AllNotes extends React.Component {
       }
     }).then(response => response.json())
       .then(response => {
-        this.setState({
-            notes: response.notes
-          }
-        );
+        this.props.onNotesAdd(response.notes);
       });
   }
 
   addNote(text, id) {
-    this.setState({
-      notes: [
-        ...this.state.notes,
-        { text, id }
-      ],
-    })
+    this.props.onNoteAdd(id, text);
   }
 
   deleteNote(id) {
-    let notes = this.state.notes.slice();
-    for (let i = 0; i < notes.length; i++) {
-      if (notes[i].id === id) {
-        notes.splice(i, 1)
-      }
-
-      this.setState({notes})
-    }
+    this.props.onNoteDelete(id);
   }
 
   render() {
@@ -49,7 +31,7 @@ class AllNotes extends React.Component {
       <div className={styles.AllNotes}>
         <Note key="-1" addNote={(text, id) => this.addNote(text, id)} className={styles.AllNotes} target="add" />
         {
-          this.state.notes.map( (item) => (
+          this.props.notes.map( (item) => (
             <Note deleteNote={id => this.deleteNote(id)} key={item.id} target="edit" id={item.id} text={item.text}/>
           ))
         }
@@ -58,4 +40,4 @@ class AllNotes extends React.Component {
   }
 }
 
-export default AllNotes;
+export default connect(mapStateToProps, mapDispatchToProps)(AllNotes);
