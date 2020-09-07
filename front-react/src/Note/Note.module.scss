@@ -9,6 +9,8 @@ $f-f: sans;
   border: 1px solid #c0c0c0;
   border-radius: 5px;
   height: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 .textField {
@@ -22,6 +24,7 @@ $f-f: sans;
   resize: none;
   background: none;
   outline: none;
+  flex: 1 1 auto;
 }
 
 .text {
