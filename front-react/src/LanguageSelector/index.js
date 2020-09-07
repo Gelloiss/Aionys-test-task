@@ -1,8 +1,7 @@
 import React from 'react';
-// import styles from './Note.module.scss';
+import styles from './Language.module.scss';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../Redux';
-import {setLocale} from 'react-redux-i18n';
 
 class LanguageSelector extends React.Component {
   constructor(props) {
@@ -15,9 +14,11 @@ class LanguageSelector extends React.Component {
 
   render() {
     return(
-      <div>
-        <button onClick={() => this.setLanguage('en')}>EN</button>
-        <button onClick={() => this.setLanguage('ru')}>RU</button>
+      <div className={styles.languageContainer}>
+        <div className={styles.languageBox}>
+          <div className={styles.languageButton} onClick={() => this.setLanguage('ru')}></div>
+          <div className={styles.languageButton} onClick={() => this.setLanguage('en')}></div>
+        </div>
       </div>
     )
   }

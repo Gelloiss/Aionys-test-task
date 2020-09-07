@@ -27,7 +27,7 @@ class Note extends React.Component {
       }).then(response => response.json())
         .then(response => {
           this.props.addNote(text, response.id);
-          this.setState({"value":''});
+          this.setState({value:''});
         })
     }
 
@@ -41,6 +41,7 @@ class Note extends React.Component {
         body: JSON.stringify({"text":text})
       }).then(() => {
         this.props.onNoteUpdate(id, text);
+        this.props.setMessage(I18n.t('messageUpdating'));
       })
     }
   }

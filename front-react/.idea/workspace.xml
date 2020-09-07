@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faeb0bc6-3a94-4c7e-b1ff-e34c587e8646" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/front-react.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/front-react.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Note/Note.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/Note/Note.module.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Message/Message.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e2e/index.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/e2e/index.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AllNotes/AllNotes.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/AllNotes/AllNotes.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AllNotes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AllNotes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LanguageSelector/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/LanguageSelector/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Note/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Note/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Redux/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Redux/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/language/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/language/index.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../server/base/increment.json" beforeDir="false" afterPath="$PROJECT_DIR$/../server/base/increment.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../server/base/note.json" beforeDir="false" afterPath="$PROJECT_DIR$/../server/base/note.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +33,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../server" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -50,7 +50,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599470282004</updated>
-      <workItem from="1599470283678" duration="2343000" />
+      <workItem from="1599470283678" duration="10583000" />
+      <workItem from="1599482532924" duration="11606000" />
     </task>
     <servers />
   </component>
@@ -58,9 +59,21 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="139" key="FileChooserDialogImpl" timestamp="1599470311553">
+    <state x="445" y="186" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599473087781">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="463" y="139" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1599470311553" />
+    <state x="445" y="186" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1599473087781" />
+    <state x="463" y="139" key="FileChooserDialogImpl" timestamp="1599494527525">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="463" y="139" key="FileChooserDialogImpl/0.0.1366.768@0.0.1366.768" timestamp="1599494527525" />
+    <state x="338" y="172" key="run.anything.popup" timestamp="1599493522194">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="338" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1599493522194" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1599490974589">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1599490974589" />
   </component>
 </project>

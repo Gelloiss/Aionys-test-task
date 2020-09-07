@@ -8,8 +8,8 @@ beforeAll(async () => {
   // launch browser
   browser = await puppeteer.launch(
     {
-      // headless: false, // headless mode set to false so browser opens up with visual feedback
-      // slowMo: 20, // how slow actions should be
+       headless: false, // headless mode set to false so browser opens up with visual feedback
+       slowMo: 20, // how slow actions should be
     }
   )
   // creates a new page in the opened browser

@@ -5,7 +5,7 @@
 3. To run app, execute `npm start`
 4. This app wil be in http://localhost:3001/
 
-##Avalible methods
+## Avalible methods
 
 1. Get all notes
 

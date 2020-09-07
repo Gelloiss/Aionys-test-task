@@ -1,0 +1,21 @@
+.languageContainer {
+  height: 50px;
+  width: 100%;
+}
+
+.languageBox {
+  width: 100px;
+  border-radius: 0 0px 12px 12px;
+  border-top: none;
+  background-image: url("./language.png");
+  border: 1px solid rgb(200, 200, 200);
+  height: 33px;
+  text-align: center;
+  margin-left: 70px;
+  display: flex;
+}
+
+.languageButton {
+  width: 50%;
+  cursor: pointer;
+}
