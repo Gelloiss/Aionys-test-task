@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const port = 3000;
+const port = 3001;
 app.use(bodyParser.json({extended: true}));
 app.use(cors({origin:'*'}));
 const fs = require('fs');
@@ -79,22 +79,21 @@ app.post('/notes', (request, response) => { //Add new note
   });
   setBase('note.json', notes);
   setBase('increment.json', {'note':i});
-  response.send(true);
+  response.send({"id":i});
 });
 
 app.put('/notes/:id', (request, response) => { //update base
+  const id = request.params.id;
   let error = false;
   const notes = getBase();
   if (Number.isInteger(parseInt(id))) {
-    for (let i = 0; i < notes.length; i++) {
-      const position = getNotePosition(notes, request.params.id);
-      if (position != -1) {
-        notes[i].text = request.body.text;
-        setBase('note.json', notes);
-      }
-      else {
-        error = 'note does not exist';
-      }
+    const position = getNotePosition(notes, request.params.id);
+    if (position != -1) {
+      notes[position].text = request.body.text;
+      setBase('note.json', notes);
+    }
+    else {
+      error = 'note does not exist';
     }
   }
   else {
