@@ -8,8 +8,8 @@ beforeAll(async () => {
   // launch browser
   browser = await puppeteer.launch(
     {
-      //headless: false, // headless mode set to false so browser opens up with visual feedback
-      //slowMo: 20, // how slow actions should be
+      // headless: false, // headless mode set to false so browser opens up with visual feedback
+      // slowMo: 20, // how slow actions should be
     }
   )
   // creates a new page in the opened browser
@@ -25,13 +25,11 @@ describe('notes', () => {
 
     await page.click('textarea');
     await page.type('textarea', testText);
-    await page.click('button');
+    await page.click('button[data-test=add]');
 
     await page.waitForFunction(function (testText) {
-      return Array.from(document.querySelectorAll('p')).filter(it => it.innerHTML === testText).length > 0
+      return Array.from(document.querySelectorAll('pre')).filter(it => it.innerHTML === testText).length > 0
     }, { polling: 100 }, testText);
-
-
   }, 1600000);
 });
 

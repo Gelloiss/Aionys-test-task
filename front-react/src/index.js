@@ -19,7 +19,7 @@ const store = createStore(
 
 syncTranslationWithStore(store);
 store.dispatch(loadTranslations(Language));
-//store.dispatch(setLocale(store.getState().redux.language));
+store.dispatch(setLocale(store.getState().redux.language));
 
 ReactDOM.render(
   <React.StrictMode>

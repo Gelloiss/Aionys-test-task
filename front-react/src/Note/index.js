@@ -58,7 +58,7 @@ class Note extends React.Component {
         <div className={styles.noteBlock}>
           <textarea placeholder={I18n.t('textareaPlaceholder')} className={styles.textField} value={this.state.value} onChange={this.handleChange} />
           <div className={styles.buttonsBlock}>
-            <button onClick={() => this.submit(this.props.target, this.state.value)}>{I18n.t('buttonAdd')}</button>
+            <button data-test="add" onClick={() => this.submit(this.props.target, this.state.value)}>{I18n.t('buttonAdd')}</button>
           </div>
         </div>
       )
