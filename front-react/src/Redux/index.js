@@ -1,5 +1,8 @@
+import  { setLocale } from 'react-redux-i18n';
+
 const initialState = {
   notes: [],
+  language: 'en',
 };
 
 export default (state = initialState, action) => {
@@ -12,13 +15,16 @@ export default (state = initialState, action) => {
       return { ...state, notes: state.notes.filter(it => it.id !== action.payload) };
     case 'UPDATE_NOTE':
       return { ...state, notes: state.notes.map(it => it.id === action.payload.id ? action.payload  : it) };
+    case 'SET_LANGUAGE':
+      return { ...state, language: action.payload };
     default:
       return state;
   }
 };
 
 export const mapStateToProps = state => ({
-  notes: state.notes,
+  notes: state.redux.notes,
+  language: state.redux.language,
 });
 
 export const mapDispatchToProps = dispatch => {
@@ -47,5 +53,12 @@ export const mapDispatchToProps = dispatch => {
         payload: { id, text },
       });
     },
+    onSetLanguage: (identifier) => {
+      dispatch({
+        type: 'SET_LANGUAGE',
+        payload: identifier
+      });
+      dispatch(setLocale(identifier));
+    }
   };
 }

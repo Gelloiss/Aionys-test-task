@@ -1,0 +1,14 @@
+{
+  "en": {
+    "textareaPlaceholder": "Enter note text",
+    "buttonAdd": "Add note",
+    "buttonUpdate": "Update note",
+    "buttonDelete": "Delete note"
+  },
+  "ru": {
+    "textareaPlaceholder": "Введите текст заметки",
+    "buttonAdd": "Добавить заметку",
+    "buttonUpdate": "Сохранить заметку",
+    "buttonDelete": "Удалить заметку"
+  }
+}

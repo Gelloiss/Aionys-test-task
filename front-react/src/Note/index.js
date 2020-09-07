@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Note.module.scss';
 import { connect } from 'react-redux';
 import { mapDispatchToProps, mapStateToProps } from '../Redux';
+import { I18n } from 'react-redux-i18n';
 
 class Note extends React.Component {
   constructor(props) {
@@ -55,9 +56,9 @@ class Note extends React.Component {
     if (this.props.target === 'add') {
       return (
         <div className={styles.noteBlock}>
-          <textarea placeholder="enter the text" className={styles.textField} value={this.state.value} onChange={this.handleChange} />
+          <textarea placeholder={I18n.t('textareaPlaceholder')} className={styles.textField} value={this.state.value} onChange={this.handleChange} />
           <div className={styles.buttonsBlock}>
-            <button onClick={() => this.submit(this.props.target, this.state.value)}>Submit</button>
+            <button onClick={() => this.submit(this.props.target, this.state.value)}>{I18n.t('buttonAdd')}</button>
           </div>
         </div>
       )
@@ -66,10 +67,10 @@ class Note extends React.Component {
     if (this.state.edit) {
       return (
         <div className={styles.noteBlock}>
-          <textarea onBlur={() => this.setState({edit: false})} autoFocus className={styles.textField} value={this.state.value} onChange={this.handleChange} />
+          <textarea placeholder={I18n.t('textareaPlaceholder')} onBlur={() => this.setState({edit: false})} autoFocus className={styles.textField} value={this.state.value} onChange={this.handleChange} />
           <div className={styles.buttonsBlock}>
-            <button onMouseDown={() => this.submit(this.props.target, this.state.value, this.props.id)}>Submit</button>
-            <button onMouseDown={() => this.delete(this.props.id)}>Delete</button>
+            <button onMouseDown={() => this.submit(this.props.target, this.state.value, this.props.id)}>{I18n.t('buttonUpdate')}</button>
+            <button onMouseDown={() => this.delete(this.props.id)}>{I18n.t('buttonDelete')}</button>
           </div>
         </div>
       )
@@ -77,11 +78,9 @@ class Note extends React.Component {
 
     return (
       <div className={styles.noteBlock}>
-        <p onClick={() => this.setState({edit: true, value: this.state.value})} className={styles.text}>
-          <pre>
-            {this.state.value}
-          </pre>
-        </p>
+        <pre onClick={() => this.setState({edit: true, value: this.state.value})} className={styles.text}>
+          {this.state.value}
+        </pre>
       </div>
     )
   }

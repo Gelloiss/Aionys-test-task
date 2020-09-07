@@ -3,6 +3,8 @@ import Note from '../Note';
 import styles from './AllNotes.module.scss';
 import { connect } from 'react-redux';
 import { mapStateToProps, mapDispatchToProps } from '../Redux';
+import LanguageSelector from '../LanguageSelector';
+
 
 class AllNotes extends Component {
   componentDidMount() {
@@ -29,6 +31,9 @@ class AllNotes extends Component {
   render() {
     return (
       <div className={styles.AllNotes}>
+        <div className={styles.ButtonSelector}>
+          <LanguageSelector />
+        </div>
         <Note key="-1" addNote={(text, id) => this.addNote(text, id)} className={styles.AllNotes} target="add" />
         {
           this.props.notes.map( (item) => (
