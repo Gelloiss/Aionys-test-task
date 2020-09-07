@@ -8,7 +8,8 @@ $f-f: serif;
   background: antiquewhite;
   border: 1px solid #c0c0c0;
   border-radius: 5px;
-  height: 300px;
+  height: 350px;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
 }
@@ -45,4 +46,42 @@ $f-f: serif;
 .buttonsBlock {
   display: flex;
   justify-content: space-between;
+}
+
+.buttonSubmitNote {
+  min-width: 130px;
+  color: #fff;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.buttonSubmitNoteAdd {
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+
+  &:hover {
+    background-color: #449d44;
+    border-color: #398439;
+  }
+}
+
+.buttonSubmitNoteDelete {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+
+  &:hover {
+    background-color: #c9302c;
+    border-color: #ac2925;
+  }
 }

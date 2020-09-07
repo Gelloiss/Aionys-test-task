@@ -3,12 +3,14 @@
     "textareaPlaceholder": "Enter note text",
     "buttonAdd": "Add note",
     "buttonUpdate": "Update note",
-    "buttonDelete": "Delete note"
+    "buttonDelete": "Delete note",
+    "textAboutSave": "The note is also automatically saved when you exit edit mode\n\n"
   },
   "ru": {
     "textareaPlaceholder": "Введите текст заметки",
     "buttonAdd": "Добавить заметку",
-    "buttonUpdate": "Сохранить заметку",
-    "buttonDelete": "Удалить заметку"
+    "buttonUpdate": "Сохранить",
+    "buttonDelete": "Удалить заметку",
+    "textAboutSave": "Заметка также автоматически сохраняется, когда вы выходите из режима редактирования"
   }
 }

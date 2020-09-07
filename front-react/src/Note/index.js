@@ -58,7 +58,7 @@ class Note extends React.Component {
         <div className={styles.noteBlock}>
           <textarea placeholder={I18n.t('textareaPlaceholder')} className={styles.textField} value={this.state.value} onChange={this.handleChange} />
           <div className={styles.buttonsBlock}>
-            <button data-test="add" onClick={() => this.submit(this.props.target, this.state.value)}>{I18n.t('buttonAdd')}</button>
+            <button className={styles.buttonSubmitNote + ' ' + styles.buttonSubmitNoteAdd} data-test="add" onClick={() => this.submit(this.props.target, this.state.value)}>{I18n.t('buttonAdd')}</button>
           </div>
         </div>
       )
@@ -67,10 +67,13 @@ class Note extends React.Component {
     if (this.state.edit) {
       return (
         <div className={styles.noteBlock}>
-          <textarea placeholder={I18n.t('textareaPlaceholder')} onBlur={() => this.setState({edit: false})} autoFocus className={styles.textField} value={this.state.value} onChange={this.handleChange} />
+          <textarea placeholder={I18n.t('textareaPlaceholder')} onBlur={() => {
+            this.setState({edit: false});
+            this.submit(this.props.target, this.state.value, this.props.id);
+          }} autoFocus className={styles.textField} value={this.state.value} onChange={this.handleChange} />
           <div className={styles.buttonsBlock}>
-            <button onMouseDown={() => this.submit(this.props.target, this.state.value, this.props.id)}>{I18n.t('buttonUpdate')}</button>
-            <button onMouseDown={() => this.delete(this.props.id)}>{I18n.t('buttonDelete')}</button>
+            <button className={styles.buttonSubmitNote + ' ' + styles.buttonSubmitNoteAdd} onMouseDown={() => this.submit(this.props.target, this.state.value, this.props.id)} title={I18n.t('textAboutSave')}>{I18n.t('buttonUpdate')}</button>
+            <button className={styles.buttonSubmitNote + ' ' + styles.buttonSubmitNoteDelete} onMouseDown={() => this.delete(this.props.id)}>{I18n.t('buttonDelete')}</button>
           </div>
         </div>
       )
